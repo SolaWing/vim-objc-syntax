@@ -529,13 +529,12 @@ syn match ConventionConst '\<\u\w*Key\>' display
 syn cluster objcObjCEntities add=NotificationKey,instanceProperty,cMacro,ConstantError
 syn cluster objcCEntities add=cIndex,dotProperty,ConventionConst,cCustomFunc
 " this group element will prevent contained in all matchs
-syn cluster includeOnlyGroup contains=objcMessageColon,objcMessageName,objcMethodReturnPart,objcMethodName,objcMethodArg,objcMethodColon,objcMethodType,objcDeclareType,objcPropertyType,IBCollectionType,forinType,objcBlocksRegion,objcSuperView,objcCategory,impProtocol,impProtocolName,objcBlockDeclareName,objcBlockDeclareReturnType
-" Don't match these in this strange group for edge cases...
-syn cluster cMultiGroup add=@includeOnlyGroup
-" Don't match in predefine macro
-syn cluster cPreProcGroup add=@includeOnlyGroup,ConventionConst
-" Don't match these groups in cParen "(...)"
-syn cluster cParenGroup add=@includeOnlyGroup
+"syn cluster includeOnlyGroup contains=objcMessageColon,objcMessageName,objcMethodReturnPart,objcMethodName,objcMethodArg,objcMethodColon,objcMethodType,objcDeclareType,objcPropertyType,IBCollectionType,forinType,objcBlocksRegion,objcSuperView,objcCategory,impProtocol,impProtocolName,objcBlockDeclareName,objcBlockDeclareReturnType
+"syn cluster cMultiGroup add=@includeOnlyGroup
+"syn cluster cPreProcGroup add=@includeOnlyGroup
+"syn cluster cParenGroup add=@includeOnlyGroup
+
+syn cluster cPreProcGroup add=ConventionConst
 " This fixes a bug with completion inside parens (e.g. if ([NSString ]))
 syn cluster cParenGroup remove=objcMethodCall
 " This fixes a bug Preprocessor contains method call
