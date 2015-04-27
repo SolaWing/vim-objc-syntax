@@ -656,6 +656,7 @@ syn keyword cocoaConstant containedin=objcMethodCall NSASCIIStringEncoding
 \ UIWebViewNavigationTypeBackForward UIWebViewNavigationTypeFormResubmitted
 \ UIWebViewNavigationTypeFormSubmitted UIWebViewNavigationTypeLinkClicked
 \ UIWebViewNavigationTypeOther UIWebViewNavigationTypeReload
+\ CGPointZero
 
 
 hi def link cocoaConstant Constant

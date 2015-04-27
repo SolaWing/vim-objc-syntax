@@ -550,8 +550,9 @@ hi def link objcMethodType cType
 hi def link objcMethodName Special
 hi def link objcMethodColon objcMethodName
 
-hi instanceProperty gui=italic guifg=cyan term=italic
-hi dotProperty gui=none guifg=cyan term=italic
+hi def link dotProperty Identifier
+hi def link instanceProperty Identifier
+"hi def instanceProperty gui=italic term=italic cterm=italic
 
 hi def link objcPropertyType cType
 hi def link objcDeclareType cType
