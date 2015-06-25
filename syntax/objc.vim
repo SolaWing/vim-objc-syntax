@@ -75,7 +75,7 @@ syn keyword objcDeclPropAccessorType readonly readwrite contained
 syn keyword objcDeclPropAssignSemantics assign retain copy contained
 syn keyword objcDeclPropAtomicity nonatomic contained
 syn keyword objcDeclPropARC strong weak contained
-syn region objcDeclProp display transparent keepend start=/@property\s*(/ end=/)/ contains=objcProperty,objcDeclPropAccessorName,objcDeclPropAccessorType,objcDeclPropAssignSemantics,objcDeclPropAtomicity,objcDeclPropARC
+" syn region objcDeclProp display transparent keepend start=/@property\s*(/ end=/)/ contains=objcProperty,objcDeclPropAccessorName,objcDeclPropAccessorType,objcDeclPropAssignSemantics,objcDeclPropAtomicity,objcDeclPropARC
 
 " To distinguish colons in methods and dictionaries from those in C's labels.
 syn match objcColon display /^\s*\h\w*\s*\:\(\s\|.\)/me=e-1,he=e-1
@@ -457,6 +457,7 @@ syn region objcBlocksRegion matchgroup=objcBlocksRegion start='{' end='}' contai
 "syn match objcBlockDeclareReturnType "\v%(\w+ )*\w+\ze\s*\**\s*\(" contained display contains=cStorageClass,cType,objcObjectLifetimeQualifier
 " IBOutlet keywords
 "syn match objcBlockDeclareName "(\s*[^*]\s*\zs\w*\ze\s*)" contained display
+
 syn keyword IBOutlet IBOutlet nextgroup=objcPropertyType skipwhite
 syn keyword IBOutlet IBOutletCollection skipwhite nextgroup=IBCollectionType
 syn match IBCollectionType '(\s*\w\+\s*)'hs=s+1,he=e-1 display contained nextgroup=objcPropertyType skipwhite
@@ -469,7 +470,7 @@ syn match impProtocol display transparent '<\_[^>]\+>' contains=impProtocolName 
 syn match impProtocolName display '\<\w\+' contained
 
 " for in declare
-syn keyword cRepeat for nextgroup=forinDeclareType skipwhite
+syn keyword cRepeat for nextgroup=forinStatement skipwhite
 syn match forinStatement '\v\(\s*\u\w+\s*\*\s*\w+\s+in\s+.+\)' transparent display contained contains=objcMethodCall,@objcObjCEntities,@objcCEntities
 syn match forinType '\u\w\+\s*\*'he=e-1 contained containedin=forinStatement
 
