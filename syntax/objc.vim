@@ -65,12 +65,12 @@ syn match objcFastEnumKeyword display /\sin\(\s\|$\)/
 " ObjC Literal Syntax
 syn match objcLiteralSyntaxNumber display /@\(YES\>\|NO\>\|\d\|-\|+\)/ contains=cNumber,cFloat,cOctal
 syn match objcLiteralSyntaxSpecialChar display /@'/ contains=cSpecialCharacter
-syn match objcLiteralSyntaxChar display /@'[^\\]'/ 
+syn match objcLiteralSyntaxChar display /@'[^\\]'/
 syn match objcLiteralSyntaxOp display /@\((\|\[\|{\)/me=e-1,he=e-1
 
 " ObjC Declared Property Attributes
 syn match objDeclPropAccessorNameAssign display /\s*=\s*/ contained
-syn region objcDeclPropAccessorName display start=/\(getter\|setter\)/ end=/\h\w*/ contains=objDeclPropAccessorNameAssign
+syn region objcDeclPropAccessorName display start=/\(getter\|setter\)/ end=/\h\w*/ contains=objDeclPropAccessorNameAssign contained
 syn keyword objcDeclPropAccessorType readonly readwrite contained
 syn keyword objcDeclPropAssignSemantics assign retain copy contained
 syn keyword objcDeclPropAtomicity nonatomic contained
@@ -187,7 +187,7 @@ syn keyword objcType unichar
 syn keyword objcExceptionValue NSParseErrorException NSCharacterConversionException
 syn keyword objcMacro NSMaximumStringLength
 syn keyword objcEnum NSStringCompareOptions
-syn keyword objcEnumValue NSCaseInsensitiveSearch NSLiteralSearch NSBackwardsSearch NSAnchoredSearch NSNumericSearch NSDiacriticInsensitiveSearch NSWidthInsensitiveSearch NSForcedOrderingSearch NSRegularExpressionSearch 
+syn keyword objcEnumValue NSCaseInsensitiveSearch NSLiteralSearch NSBackwardsSearch NSAnchoredSearch NSNumericSearch NSDiacriticInsensitiveSearch NSWidthInsensitiveSearch NSForcedOrderingSearch NSRegularExpressionSearch
 syn keyword objcEnum NSStringEncoding
 syn keyword objcEnumValue NSASCIIStringEncoding NSNEXTSTEPStringEncoding NSJapaneseEUCStringEncoding NSUTF8StringEncoding NSISOLatin1StringEncoding NSSymbolStringEncoding NSNonLossyASCIIStringEncoding NSShiftJISStringEncoding NSISOLatin2StringEncoding NSUnicodeStringEncoding NSWindowsCP1251StringEncoding NSWindowsCP1252StringEncoding NSWindowsCP1253StringEncoding NSWindowsCP1254StringEncoding NSWindowsCP1250StringEncoding NSISO2022JPStringEncoding NSMacOSRomanStringEncoding NSUTF16StringEncoding NSUTF16BigEndianStringEncoding NSUTF16LittleEndianStringEncoding NSUTF32StringEncoding NSUTF32BigEndianStringEncoding NSUTF32LittleEndianStringEncoding
 syn keyword objcEnum NSStringEncodingConversionOptions
@@ -240,9 +240,9 @@ syn keyword objcEnumValue NSUserDomainMask NSLocalDomainMask NSNetworkDomainMask
 syn match objcClass /NSFileManager\s*\*/me=s+13,he=s+13
 syn match objcClass /NSDirectoryEnumerator\s*\*/me=s+21,he=s+21
 syn keyword objcEnum NSVolumeEnumerationOptions
-syn keyword objcEnumValue NSVolumeEnumerationSkipHiddenVolumes NSVolumeEnumerationProduceFileReferenceURLs 
+syn keyword objcEnumValue NSVolumeEnumerationSkipHiddenVolumes NSVolumeEnumerationProduceFileReferenceURLs
 syn keyword objcEnum NSDirectoryEnumerationOptions
-syn keyword objcEnumValue NSDirectoryEnumerationSkipsSubdirectoryDescendants NSDirectoryEnumerationSkipsPackageDescendants NSDirectoryEnumerationSkipsHiddenFiles 
+syn keyword objcEnumValue NSDirectoryEnumerationSkipsSubdirectoryDescendants NSDirectoryEnumerationSkipsPackageDescendants NSDirectoryEnumerationSkipsHiddenFiles
 syn keyword objcEnum NSFileManagerItemReplacementOptions
 syn keyword objcEnumValue NSFileManagerItemReplacementUsingNewMetadataOnly NSFileManagerItemReplacementWithoutDeletingBackupItem
 syn keyword objcNotificationValue NSUbiquityIdentityDidChangeNotification
@@ -258,7 +258,7 @@ syn match objcClass /NSLocale\s*\*/me=s+8,he=s+8
 syn keyword objcEnum NSLocaleLanguageDirection
 syn keyword objcEnumValue NSLocaleLanguageDirectionUnknown NSLocaleLanguageDirectionLeftToRight NSLocaleLanguageDirectionRightToLeft NSLocaleLanguageDirectionTopToBottom NSLocaleLanguageDirectionBottomToTop
 syn keyword objcNotificationValue NSCurrentLocaleDidChangeNotification
-syn keyword objcConstVar NSLocaleIdentifier NSLocaleLanguageCode NSLocaleCountryCode NSLocaleScriptCode NSLocaleVariantCode NSLocaleExemplarCharacterSet NSLocaleCalendar NSLocaleCollationIdentifier NSLocaleUsesMetricSystem NSLocaleMeasurementSystem NSLocaleDecimalSeparator NSLocaleGroupingSeparator NSLocaleCurrencySymbol NSLocaleCurrencyCode NSLocaleCollatorIdentifier NSLocaleQuotationBeginDelimiterKey NSLocaleQuotationEndDelimiterKey NSLocaleAlternateQuotationBeginDelimiterKey NSLocaleAlternateQuotationEndDelimiterKey NSGregorianCalendar NSBuddhistCalendar NSChineseCalendar NSHebrewCalendar NSIslamicCalendar NSIslamicCivilCalendar NSJapaneseCalendar NSRepublicOfChinaCalendar NSPersianCalendar NSIndianCalendar NSISO8601Calendar 
+syn keyword objcConstVar NSLocaleIdentifier NSLocaleLanguageCode NSLocaleCountryCode NSLocaleScriptCode NSLocaleVariantCode NSLocaleExemplarCharacterSet NSLocaleCalendar NSLocaleCollationIdentifier NSLocaleUsesMetricSystem NSLocaleMeasurementSystem NSLocaleDecimalSeparator NSLocaleGroupingSeparator NSLocaleCurrencySymbol NSLocaleCurrencyCode NSLocaleCollatorIdentifier NSLocaleQuotationBeginDelimiterKey NSLocaleQuotationEndDelimiterKey NSLocaleAlternateQuotationBeginDelimiterKey NSLocaleAlternateQuotationEndDelimiterKey NSGregorianCalendar NSBuddhistCalendar NSChineseCalendar NSHebrewCalendar NSIslamicCalendar NSIslamicCivilCalendar NSJapaneseCalendar NSRepublicOfChinaCalendar NSPersianCalendar NSIndianCalendar NSISO8601Calendar
 " NSFormatter.h
 syn match objcClass /NSFormatter\s*\*/me=s+11,he=s+11
 " NSNumberFormatter.h
@@ -475,7 +475,7 @@ syn match forinStatement '\v\(\s*\u\w+\s*\*\s*\w+\s+in\s+.+\)' transparent displ
 syn match forinType '\u\w\+\s*\*'he=e-1 contained containedin=forinStatement
 
 
-" Matches "_instanceProperty" 
+" Matches "_instanceProperty"
 syn match instanceProperty '\<_\l\w*' display
 " Matches "xx.Property"
 syn match dotProperty '\%([a-zA-Z0-9_\]]\.\)\@2<=\l\w*' display
@@ -489,7 +489,7 @@ syn match objcMethodType '([^*)]\+\ze\**\s*)'hs=s+1 display contained containedi
 syn match objcMethodArg ')\@1<=\s*\zs\w\+' display contained containedin=objcMethod
 " Matches "foo:" & "and:" in above
 syn match objcMethodReturnPart '^\s*[-+]\s*(\_[^)]*)' display transparent contained containedin=objcMethod nextgroup=objcMethodName,objcMethodColon contains=objcInstanceMethod,objcClassMethod,objcMethodType skipwhite
-syn match objcMethodName '\w\+' display contained 
+syn match objcMethodName '\w\+' display contained
 syn match objcMethodColon '\<\w\+:' display contained containedin=objcMethod
 
 " Matches Property Type
@@ -500,13 +500,13 @@ syn match objcPropertyType '\<\u\w*' display contained
 " Declared var "__block UIView* __weak view;" or "UIView* view ="
 syn match objcDeclareStatement '\v^\s*%(%(__)?\w+\s+)*\h\w*\s*\*?\s*%(__\w+\s+)*<\w+\_s*[=;]\=@!'me=e-1 display transparent containedin=objcBlocks contains=objcDeclareType,objcObjectLifetimeQualifier,objcBlocksQualifier,@objcObjCEntities,@objcCEntities
 " Matches Type in the above Declared
-syn match objcDeclareType '\<\u\w*' display contained 
+syn match objcDeclareType '\<\u\w*' display contained
 
 " Matches Class sender in Message call
 syn match objcMessageClassSender '\[\@1<=\s*\u\w*' display contained containedin=objcMethodCall
 " Matches "bar" in "[NSObject bar]" or "bar" in "[[NSObject foo: baz] bar]",
 " but NOT "bar" in "[NSObject foo: bar]". but match foo
-"syn match objcMessageName '\%(\[\s*\w\+\s\+\|\]\s*\)\@<=\w\+\s*\]'me=e-1 display contained containedin=objcMethodCall 
+"syn match objcMessageName '\%(\[\s*\w\+\s\+\|\]\s*\)\@<=\w\+\s*\]'me=e-1 display contained containedin=objcMethodCall
 syn match objcMessageName '[a-zA-Z0-9_\]]\@1<=\s*\zs\<\w\+\s*\]'me=e-1 display contained containedin=objcMethodCall
 " Matches "foo:" in "[NSObject foo: bar]" or "[[NSObject new] foo: bar]"
 syn match objcMessageColon '\<\w\+:'he=e-1 display contained containedin=objcMethodCall
@@ -518,11 +518,11 @@ syn region cIndex matchgroup=cIndex start='[a-zA-Z0-9_\]]\@1<=\s*\zs\[' end='\]'
 syn keyword cStatement return nextgroup=objcMethodCall skipwhite
 
 " treat keyword begin with k And follow is Upper char word as Constant
-syn match ConventionConst '\<k\u\w*' display 
+syn match ConventionConst '\<k\u\w*' display
 " Notification key, begin with Upper and end with Notification
 syn match ConventionConst '\<\u\w\+Notification\>' display
 " fix conflict with NotificationKey
-syn keyword objcClass NSNotification 
+syn keyword objcClass NSNotification
 " key constant,such as NSKeyValueChangeNewKey
 syn match ConventionConst '\<\u\w*Key\>' display
 
