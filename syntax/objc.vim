@@ -506,14 +506,13 @@ syn match objcDeclareType '\<\u\w*' display contained
 syn match objcMessageClassSender '\[\@1<=\s*\u\w*' display contained containedin=objcMethodCall
 " Matches "bar" in "[NSObject bar]" or "bar" in "[[NSObject foo: baz] bar]",
 " but NOT "bar" in "[NSObject foo: bar]". but match foo
-"syn match objcMessageName '\%(\[\s*\w\+\s\+\|\]\s*\)\@<=\w\+\s*\]'me=e-1 display contained containedin=objcMethodCall
 syn match objcMessageName '[a-zA-Z0-9_\]]\@1<=\s*\zs\<\w\+\s*\]'me=e-1 display contained containedin=objcMethodCall
 " Matches "foo:" in "[NSObject foo: bar]" or "[[NSObject new] foo: bar]"
 syn match objcMessageColon '\<\w\+:'he=e-1 display contained containedin=objcMethodCall
 syn clear objcColon " conflict with objcColon
 
-" Distinguish index and method call
-syn region cIndex matchgroup=cIndex start='[a-zA-Z0-9_\]]\@1<=\s*\zs\[' end='\]' display contains=@objcObjCEntities,@objcCEntities,objcMethodCall
+" Distinguish index and method call  : FIX two many space cause parse slow
+syn region cIndex matchgroup=cIndex start='[a-zA-Z0-9_\]]\@1<=\s\{,2}\zs\[' end='\]' display contains=@objcObjCEntities,@objcCEntities,objcMethodCall
 " fix return can follow objcMethodCall, not cIndex
 syn keyword cStatement return nextgroup=objcMethodCall skipwhite
 
