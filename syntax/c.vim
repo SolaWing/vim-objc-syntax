@@ -468,8 +468,8 @@ let &cpo = s:cpo_save
 unlet s:cpo_save
 " vim: ts=8
 
-" matches All upper words as macro
-syn match cMacro '\<\%(__\)\?\u\+\%(_\?\u\+\)*\>' display
+" matches All upper+number words as macro
+syn match cMacro '\<\%(__\)\?\u\+\%(_\?\%(\u\|\d\)\+\)*\>' display
 
 " Highlight Function names
 syn match    cCustomFunc     "\<\w\+\s*("me=e-1 
