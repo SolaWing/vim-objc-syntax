@@ -49,7 +49,7 @@ syn match dotProperty '\%([a-zA-Z0-9_\]]\.\)\@2<=\l\w*' display
 " Matches "- (void) foo: (int) bar and: (float) foobar"
 syn match objcMethod '^\s*[-+]\s*\_.\{-}[\{;]'me=e-1 display transparent contains=cParen,objcInstanceMethod,objcClassMethod
 " Matches "void" & "int" & "float" in above. contained in parens
-syn match objcMethodType '([^*)]\+\ze\**\s*)'hs=s+1 display contained containedin=objcMethod contains=cStorageClass,cType,objcObjectLifetimeQualifier,impProtocol,objcBlockTypeDeclare
+syn match objcMethodType '([^*)]\+\ze\**\s*)'hs=s+1 display contained containedin=objcMethod contains=objcStorageClass,cStorageClass,cType,objcObjectLifetimeQualifier,impProtocol,objcBlockTypeDeclare
 " Matches "bar & foobar" in above
 syn match objcMethodArg ')\@1<=\s*\zs\w\+' display contained containedin=objcMethod
 " Matches "foo:" & "and:" in above
